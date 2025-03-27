@@ -14,8 +14,8 @@ class QuickSort {
         int i = low + 1, j = high;
 
         while (i <= j) {
-            while (i <= high && arr[i] < pivot) i++;  // Move right if element is smaller than pivot
-            while (arr[j] > pivot) j--;  // Move left if element is greater than pivot
+            while (i <= j && arr[i] < pivot) i++;  // Move right if element is smaller than pivot
+            while (i <= j&&arr[j] > pivot) j--;  // Move left if element is greater than pivot
             if (i < j) {
                 swap(arr, i, j);
             }
