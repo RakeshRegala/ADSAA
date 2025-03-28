@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 class MergeSort {
-    static int[] temp; // Temporary array
+   
 
     static void mergeSort(int[] arr, int left, int right) {
         if (left >= right) return; // Base case
@@ -14,7 +14,7 @@ class MergeSort {
 
     static void merge(int[] arr, int left, int mid, int right) {
         int i = left, j = mid + 1, k = 0;
-        temp = new int[right - left + 1]; // Initialize temp array with correct size
+        int temp = new int[right - left + 1]; // Initialize temp array with correct size
 
         while (i <= mid && j <= right) {
             if (arr[i] < arr[j])
