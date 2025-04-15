@@ -1,53 +1,37 @@
-public class SimpleNQueens {
+import java.util.*;
 
-    static int N = 4; // You can change this value
-
-    static int[] board = new int[N]; // board[i] = column position of queen in row i
-
-    public static void main(String[] args) {
-        if (solve(0)) {
-            printBoard();
-        } else {
-            System.out.println("No solution exists.");
-        }
-    }
-
-    // Recursive function to solve the problem
-    static boolean solve(int row) {
-        if (row == N) return true; // All queens are placed
-
-        for (int col = 0; col < N; col++) {
-            if (isSafe(row, col)) {
-                board[row] = col; // Place queen
-                if (solve(row + 1)) return true;
-                // Backtrack happens automatically by overwriting board[row] later
-            }
-        }
-
-        return false;
-    }
-
-    // Check if it's safe to place queen at board[row] = col
-    static boolean isSafe(int row, int col) {
-        for (int i = 0; i < row; i++) {
-            // Same column or same diagonal
-            if (board[i] == col || Math.abs(row - i) == Math.abs(col - board[i])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // Print the board
-    static void printBoard() {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                if (board[i] == j)
-                    System.out.print("Q ");
-                else
-                    System.out.print(". ");
-            }
-            System.out.println();
-        }
-    }
+public class NQueens 
+{
+ static int[] x;
+ public static boolean place(int k, int i) 
+{ 
+  for (int j = 1; j < k; j++) 
+   if (x[j] == i || Math.abs(x[j] - i) == Math.abs(j - k)) 
+    return false;
+return true;
+}
+public static void nqueens(int k, int n)
+{
+ if (k > n) {
+  for (int i = 1; i <= n; i++)
+   System.out.print(x[i] + " ");
+   System.out.println();
+}
+ else
+  for (int i = 1; i <= n; i++)
+   if (place(k, i)) 
+   {
+     x[k] = i;
+     nqueens(k + 1, n);
+   }
+}
+public static void main(String[] args) 
+{
+    Scanner scanner = new Scanner(System.in);
+ System.out.print("Enter number of queens: ");
+ int n = scanner.nextInt();
+ scanner.close();
+ x = new int[n + 1];
+ nqueens(1, n);
+}
 }
