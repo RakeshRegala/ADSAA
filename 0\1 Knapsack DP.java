@@ -3,18 +3,18 @@ import java.util.Scanner;
 public class Knapsack{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter number of Objects:");
+        System.out.println("Enter number of Items:");
         int n = sc.nextInt();
         
         int[] p = new int[n];
         int[] w = new int[n];
         
-        System.out.println("Enter profits for each object:");
+        System.out.println("Enter profits for each Item:");
         for (int i = 0; i < n; i++) {
             p[i] = sc.nextInt();
         }
         
-        System.out.println("Enter weights for each object:");
+        System.out.println("Enter weights for each Item:");
         for (int i = 0; i < n; i++) {
             w[i] = sc.nextInt();
         }
