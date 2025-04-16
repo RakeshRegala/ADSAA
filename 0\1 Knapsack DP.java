@@ -22,10 +22,10 @@ public class Knapsack{
         System.out.println("Enter maximum weight of knapsack:");
         int m = sc.nextInt();
         
-        knapsack(m, w, p, n);
+        System.out.println("Maximum profit:  "+knapsack(m, w, p, n));
     }
 
-    public static void knapsack(int m, int[] w, int[] p, int n) {
+    public static int knapsack(int m, int[] w, int[] p, int n) {
         int[][] k = new int[n + 1][m + 1];
         for (int i = 0; i <= n; i++) {
             for (int j = 0; j <= m; j++) {
@@ -38,24 +38,6 @@ public class Knapsack{
                 }
             }
         }
-        int[] ar=new int[n];
-        int i = n, j = m;
-        while (i > 0 && j > 0) {
-            if (k[i][j] == k[i - 1][j]) {
-                ar[i-1]=0;
-                i--;
-            } else {
-                ar[i-1]=1;
-                i--;
-                j -= w[i];
-            }
-        }
-
-        System.out.println("Maximum profit: " + k[n][m]);
-        for(int num:ar){
-            System.out.print(num+" ");
+            return k[n][m];
         }
     }
-}
-
-
